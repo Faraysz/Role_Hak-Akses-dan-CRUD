@@ -5,10 +5,16 @@ ini_set('display_errors', 1);
 session_start();
 require_once __DIR__ . '/config/init.php';
 
-// Redirect jika sudah login
-if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+// Redirect jika sudah login (cek login DAN user data)
+if (isset($_SESSION['login']) && $_SESSION['login'] === true && isset($_SESSION['user'])) {
     header("Location: " . BASE_URL . "/dashboard.php");
     exit;
+}
+// Hapus session yang rusak/tidak lengkap
+if (isset($_SESSION['login']) && !isset($_SESSION['user'])) {
+    session_unset();
+    session_destroy();
+    session_start();
 }
 
 require_once __DIR__ . '/config/Database.php';
