@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/../classes/AccessControl.php';
+$baseUrl = defined('BASE_URL') ? BASE_URL : '';
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="dashboard.php">
+        <a class="navbar-brand fw-bold" href="<?= $baseUrl ?>/dashboard.php">
             <i class="bi bi-mortarboard-fill"></i> SI Kampus
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -12,14 +13,14 @@ require_once __DIR__ . '/../classes/AccessControl.php';
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    <a class="nav-link" href="<?= $baseUrl ?>/dashboard.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php?page=jurusan"><i class="bi bi-building"></i> Jurusan</a>
+                    <a class="nav-link" href="<?= $baseUrl ?>/dashboard.php?page=jurusan"><i class="bi bi-building"></i> Jurusan</a>
                 </li>
                 <?php if (AccessControl::isAdmin()): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin.php"><i class="bi bi-shield-lock"></i> Admin Panel</a>
+                    <a class="nav-link" href="<?= $baseUrl ?>/admin.php"><i class="bi bi-shield-lock"></i> Admin Panel</a>
                 </li>
                 <?php endif; ?>
             </ul>
@@ -32,7 +33,7 @@ require_once __DIR__ . '/../classes/AccessControl.php';
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><span class="dropdown-item-text text-muted"><?= htmlspecialchars($_SESSION['user']['email']) ?></span></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="<?= $baseUrl ?>/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                     </ul>
                 </li>
             </ul>

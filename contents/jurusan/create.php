@@ -1,25 +1,26 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/AccessControl.php';
+require_once __DIR__ . '/../../config/init.php';
+require_once BASE_PATH . '/classes/AccessControl.php';
 AccessControl::isLoggedIn();
 
 $pageTitle = 'Tambah Jurusan - SI Kampus';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
+require_once BASE_PATH . '/includes/header.php';
+require_once BASE_PATH . '/includes/navbar.php';
 ?>
 
 <div class="main-content">
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3><i class="bi bi-plus-circle"></i> Tambah Jurusan</h3>
-            <a href="../../dashboard.php?page=jurusan" class="btn btn-secondary">
+            <a href="<?= BASE_URL ?>/dashboard.php?page=jurusan" class="btn btn-secondary">
                 <i class="bi bi-arrow-left"></i> Kembali
             </a>
         </div>
 
         <div class="card shadow-sm">
             <div class="card-body">
-                <form method="POST" action="store.php">
+                <form method="POST" action="<?= BASE_URL ?>/contents/jurusan/store.php">
                     <div class="mb-3">
                         <label for="kode" class="form-label">Kode Jurusan</label>
                         <input type="text" class="form-control" id="kode" name="kode" placeholder="Contoh: TI, TE, TM" maxlength="10" required>
@@ -37,4 +38,4 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
     </div>
 </div>
 
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
+<?php require_once BASE_PATH . '/includes/footer.php'; ?>

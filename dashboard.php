@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/config/init.php';
 require_once __DIR__ . '/classes/AccessControl.php';
 AccessControl::isLoggedIn();
 

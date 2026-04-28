@@ -1,9 +1,10 @@
 <?php
 session_start();
+require_once __DIR__ . '/config/init.php';
 
 // Redirect jika sudah login
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
-    header("Location: dashboard.php");
+    header("Location: " . BASE_URL . "/dashboard.php");
     exit;
 }
 
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $auth->login($_POST['email'], $_POST['password']);
 
     if ($result['status']) {
-        header("Location: dashboard.php");
+        header("Location: " . BASE_URL . "/dashboard.php");
         exit;
     } else {
         $error = $result['message'];

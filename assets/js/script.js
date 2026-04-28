@@ -22,7 +22,7 @@ $(document).ready(function () {
         let id = $(this).data('id');
         if (confirm("Yakin ingin menghapus data ini?")) {
             $.ajax({
-                url: 'contents/jurusan/delete.php',
+                url: (typeof BASE_URL !== 'undefined' ? BASE_URL : '') + '/contents/jurusan/delete.php',
                 type: 'POST',
                 data: { id: id },
                 success: function (response) {
